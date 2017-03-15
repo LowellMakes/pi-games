@@ -92,6 +92,9 @@ prog = [prog_0,prog_1,prog_2,prog_3,prog_4,prog_5]
 
 sense = SenseHat()
 pos = 0
+counter = 0
+loop_clock = 0.1 #seconds
+shutdown_wait = 2 #seconds
 sense.set_pixels(seq[pos])
 flag = True
 
@@ -112,7 +115,14 @@ while True:
 			flag = False
 			prog[pos]()
 			flag = True
+		if event.direction == "left" and event.action == "held":
+			counter += loop_clock
+			if counter > shutdown_wait:
+				print "shutdown"
+				subprocess.call(["shutdown", "-h", "now"])	
+		if event.direction == "left" and event.action == "released":
+			counter = 0
 		pos = pos%(len(seq))
 		sense.set_pixels(seq[pos])
 		sense.stick.get_events()
-		sleep(0.1)
+		sleep(loop_clock)
