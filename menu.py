@@ -74,6 +74,17 @@ W, N, B, B, B, B, B, N,
 N, N, N, N, N, N, N, N,
 ]
 
+seq_6 = [
+R, R, R, R, R, R, R, R,
+R, R, N, N, N, N, R, R,
+R, N, R, N, N, R, N, R,
+R, N, N, R, R, N, N, R,
+R, N, N, R, R, N, N, R,
+R, N, R, N, N, R, N, R,
+R, R, N, N, N, N, R, R,
+R, R, R, R, R, R, R, R,
+]
+
 def prog_0():
 	subprocess.call(["python", "/home/ubuntu/pi-games/treasure.py"])
 def prog_1():
@@ -119,6 +130,7 @@ while True:
 			counter += loop_clock
 			if counter > shutdown_wait:
 				print "shutdown"
+				sense.set_pixels(seq_6)
 				subprocess.call(["shutdown", "-h", "now"])	
 		if event.direction == "left" and event.action == "released":
 			counter = 0
