@@ -4,12 +4,13 @@ from signal import pause
 import subprocess
 
 # colors
-R = [255,  92,   0] # Red
+O = [255,  92,   0] # Red
 Y = [255, 255,   0] # Yellow
 G = [  0, 255,   0] # Green
 B = [  0, 153, 255] # Blue
 W = [  255, 255, 255] # White
-DR = [x / 2 for x in R] # Dark Red
+P = [  255, 0, 255] # Purple
+DR = [x / 2 for x in O] # Dark Red
 DY = [x / 2 for x in Y] # Dark Yellow
 DG = [x / 2 for x in G] # Dark Green
 DB = [x / 2 for x in B] # Dark Blue
@@ -22,40 +23,50 @@ seq_0 = [
 N, N, N, N, N, N, N, N,
 W, N, Y, Y, Y, Y, Y, N,
 N, N, N, N, N, N, N, N,
-N, N, R, R, R, R, R, N,
+N, N, O, O, O, O, O, N,
 N, N, N, N, N, N, N, N,
 N, N, G, G, G, G, G, N,
-N, N, N, N, N, N, N, N,
+N, N, P, P, P, P, P, N,
 N, N, B, B, B, B, B, N,
 ]
 seq_1 = [
 N, N, N, N, N, N, N, N,
 N, N, Y, Y, Y, Y, Y, N,
 N, N, N, N, N, N, N, N,
-W, N, R, R, R, R, R, N,
+W, N, O, O, O, O, O, N,
 N, N, N, N, N, N, N, N,
 N, N, G, G, G, G, G, N,
-N, N, N, N, N, N, N, N,
+N, N, P, P, P, P, P, N,
 N, N, B, B, B, B, B, N,
 ]
 seq_2 = [
 N, N, N, N, N, N, N, N,
 N, N, Y, Y, Y, Y, Y, N,
 N, N, N, N, N, N, N, N,
-N, N, R, R, R, R, R, N,
+N, N, O, O, O, O, O, N,
 N, N, N, N, N, N, N, N,
 W, N, G, G, G, G, G, N,
-N, N, N, N, N, N, N, N,
+N, N, P, P, P, P, P, N,
 N, N, B, B, B, B, B, N,
 ]
 seq_3 = [
 N, N, N, N, N, N, N, N,
 N, N, Y, Y, Y, Y, Y, N,
 N, N, N, N, N, N, N, N,
-N, N, R, R, R, R, R, N,
+N, N, O, O, O, O, O, N,
 N, N, N, N, N, N, N, N,
 N, N, G, G, G, G, G, N,
+W, N, P, P, P, P, P, N,
+N, N, B, B, B, B, B, N,
+]
+seq_4 = [
 N, N, N, N, N, N, N, N,
+N, N, Y, Y, Y, Y, Y, N,
+N, N, N, N, N, N, N, N,
+N, N, O, O, O, O, O, N,
+N, N, N, N, N, N, N, N,
+N, N, G, G, G, G, G, N,
+N, N, P, P, P, P, P, N,
 W, N, B, B, B, B, B, N,
 ]
 
@@ -65,13 +76,13 @@ def prog_1():
 	subprocess.call(["timeout", "10", "python", "/home/ubuntu/pi-games/temperature.py"])
 def prog_2():
 	subprocess.call(["timeout", "10", "python", "/home/ubuntu/pi-games/conway.py"])
-	print("run third.py")
 def prog_3():
+	subprocess.call(["timeout", "10", "python", "/home/ubuntu/pi-games/nyan.py"])
+def prog_4():
 	subprocess.call(["python", "/home/ubuntu/pi-games/marble.py"])
-	print("run fourth.py")
 
-seq = [seq_0,seq_1,seq_2,seq_3]
-prog = [prog_0,prog_1,prog_2,prog_3]
+seq = [seq_0,seq_1,seq_2,seq_3,seq_4]
+prog = [prog_0,prog_1,prog_2,prog_3,prog_4]
 
 sense = SenseHat()
 pos = 0

@@ -6,7 +6,7 @@ import atexit
 
 # init
 sense = SenseHat()
-sense.set_rotation(180)
+#sense.set_rotation(180)
 sense.low_light = True
 atexit.register(sense.clear)
 
