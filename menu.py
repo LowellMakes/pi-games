@@ -62,9 +62,9 @@ W, N, B, B, B, B, B, N,
 def prog_0():
 	subprocess.call(["python", "/home/ubuntu/pi-games/treasure.py"])
 def prog_1():
-	subprocess.call(["python", "/home/ubuntu/pi-games/temperature.py"])
+	subprocess.call(["timeout", "10", "python", "/home/ubuntu/pi-games/temperature.py"])
 def prog_2():
-	subprocess.call(["python", "/home/ubuntu/pi-games/conway.py"])
+	subprocess.call(["timeout", "10", "python", "/home/ubuntu/pi-games/conway.py"])
 	print("run third.py")
 def prog_3():
 	subprocess.call(["python", "/home/ubuntu/pi-games/marble.py"])
